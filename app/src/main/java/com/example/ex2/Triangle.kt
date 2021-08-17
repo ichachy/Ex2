@@ -9,15 +9,15 @@ import java.nio.FloatBuffer
 const val VALUES = 4
 
 var verticesPositions = floatArrayOf(     // in counterclockwise order:
-    0.0f, 0.5f, 0.0f, 1.0f,   // top vertex
-    -0.5f, 0.0f, 0.0f, 1.0f, // bottom left vertex
-    0.5f, 0.0f, 0.0f, 1.0f, // bottom right vertex
+    0f, .5f, 0f, 1f,   // top vertex
+    -.5f, 0f, 0f, 1f, // bottom left vertex
+    .5f, 0f, 0f, 1f  // bottom right vertex
 )
 
 var verticesColors = floatArrayOf(     // in counterclockwise order:
-    1.0f, 0.0f ,0.0f, 1.0f,    // top vertex
-    0.0f, 1.0f ,0.0f, 1.0f,   // bottom left vertex
-    0.0f, 0.0f ,1.0f, 1.0f   // bottom right vertex
+    1f, 0f ,0f, 1f,    // top vertex
+    0f, 1f ,0f, 1f,   // bottom left vertex
+    0f, 0f ,1f, 1f   // bottom right vertex
 )
 
 
@@ -26,7 +26,7 @@ class Triangle {
     private val vertexShaderCode =
     // This matrix member variable provides a hook to manipulate
         // the coordinates of the objects that use this vertex shader
-        "uniform mat4 uMVPMatrix;" +
+                "uniform mat4 uMVPMatrix;" +
                 "attribute vec4 aPosition;" +
                 "attribute vec4 aColor;" +
                 "varying vec4 vColor;" +
@@ -122,7 +122,7 @@ class Triangle {
     private var vPMatrixHandle: Int = 0
 
     private val vertexCount: Int = 3
-    private val vertexStride: Int = Float.SIZE_BYTES * 4
+    private val vertexStride: Int = Float.SIZE_BYTES * VALUES
 
     fun draw(mvpMatrix: FloatArray) {
 
