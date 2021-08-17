@@ -15,9 +15,9 @@ var verticesPositions = floatArrayOf(     // in counterclockwise order:
 )
 
 var verticesColors = floatArrayOf(     // in counterclockwise order:
-    1f, 0f ,0f, 1f,    // top vertex
-    0f, 1f ,0f, 1f,   // bottom left vertex
-    0f, 0f ,1f, 1f   // bottom right vertex
+    1f, 0f ,0f, 1f,    // top vertex, red
+    0f, 1f ,0f, 1f,   // bottom left vertex, green
+    0f, 0f ,1f, 1f   // bottom right vertex, blue
 )
 
 
