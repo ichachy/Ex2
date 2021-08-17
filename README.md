@@ -1,2 +1,2 @@
-# Ex2
+# Lightricks_Ex2
 Lightricks bootcamp 2nd exercise
