@@ -130,14 +130,14 @@ class Triangle {
         GLES20.glUseProgram(mProgram)
 
         // get handle to vertex shader's vPosition member
-        positionHandle = GLES20.glGetAttribLocation(mProgram, "aPosition").also {handle ->
+        positionHandle = GLES20.glGetAttribLocation(mProgram, "aPosition").also {
 
             // Enable a handle to the triangle vertices
-            GLES20.glEnableVertexAttribArray(handle)
+            GLES20.glEnableVertexAttribArray(it)
 
             // Prepare the triangle coordinate data
             GLES20.glVertexAttribPointer(
-                handle,
+                it,
                 VALUES,
                 GLES20.GL_FLOAT,
                 false,
@@ -146,14 +146,14 @@ class Triangle {
             )
         }
 
-        colorHandle = GLES20.glGetAttribLocation(mProgram, "aColor").also { handle ->
+        colorHandle = GLES20.glGetAttribLocation(mProgram, "aColor").also {
 
             // Enable a handle to the triangle vertices
-            GLES20.glEnableVertexAttribArray(handle)
+            GLES20.glEnableVertexAttribArray(it)
 
             // Prepare the triangle color data
             GLES20.glVertexAttribPointer(
-                handle,
+                it,
                 VALUES,
                 GLES20.GL_FLOAT,
                 false,

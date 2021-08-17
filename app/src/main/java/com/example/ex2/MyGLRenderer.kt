@@ -13,22 +13,25 @@ class MyGLRenderer: GLSurfaceView.Renderer {
     private var angle: Float = 0f
 
     // vPMatrix is an abbreviation for "Model View Projection Matrix"
-    private val vPMatrix = FloatArray(16)
-    private val projectionMatrix = FloatArray(16)
-    private val viewMatrix = FloatArray(16)
-    private val rotationMatrix = FloatArray(16)
-    private val scratch = FloatArray(16)
+    private val vPMatrix: FloatArray = FloatArray(16)
+    private val projectionMatrix: FloatArray = FloatArray(16)
+    private val viewMatrix: FloatArray = FloatArray(16)
+    private val rotationMatrix: FloatArray = FloatArray(16)
+    private val scratch: FloatArray = FloatArray(16)
 
     override fun onSurfaceCreated(p0: GL10?, p1: EGLConfig?) {
         triangle = Triangle()
         // Set the background frame color
         GLES20.glClearColor(0f, 0f, 0f, 0f)
+
+        // Set the camera position (View matrix)
+        Matrix.setLookAtM(viewMatrix, 0, 0f, 0f, 3f, 0f, 0f, 0f, 0f, 1f, 0f)
     }
 
-    override fun onSurfaceChanged(p0: GL10?, p1: Int, p2: Int) {
-        GLES20.glViewport(0, 0, p1, p2)
+    override fun onSurfaceChanged(p0: GL10?, width: Int, height: Int) {
+        GLES20.glViewport(0, 0, width, height)
 
-        val ratio: Float = p1.toFloat() / p2.toFloat()
+        val ratio: Float = width.toFloat() /height.toFloat()
 
         // this projection matrix is applied to object coordinates
         // in the onDrawFrame() method
@@ -42,9 +45,6 @@ class MyGLRenderer: GLSurfaceView.Renderer {
     override fun onDrawFrame(p0: GL10?) {
         // Redraw background color
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT)
-
-        // Set the camera position (View matrix)
-        Matrix.setLookAtM(viewMatrix, 0, 0f, 0f, 3f, 0f, 0f, 0f, 0f, 1f, 0f)
 
         // Calculate the projection and view transformation
         Matrix.multiplyMM(vPMatrix, 0, projectionMatrix, 0, viewMatrix, 0)
